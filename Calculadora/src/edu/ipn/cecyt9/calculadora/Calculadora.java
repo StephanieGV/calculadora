@@ -45,7 +45,7 @@ public class Calculadora extends JFrame {
 	String operacion;
 
 	/** Los paneles donde colocaremos los botones */
-	JPanel panelNumeros, panelOperaciones;
+	JPanel panelNumeros, panelOperaciones;//
 
 	/** Indica si estamos iniciando o no una operación */
 	boolean nuevaOperacion = true;
