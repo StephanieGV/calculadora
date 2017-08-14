@@ -39,6 +39,8 @@ public class Calculadora extends JFrame {
 	double resultado;
 
         double resultado2;
+        
+        double resultadorad;
 	/** para guardar la operacion a realizar */
 	String operacion;
 
@@ -53,7 +55,7 @@ public class Calculadora extends JFrame {
 	 */
 	public Calculadora() {
 		super();
-		setSize(250, 300);
+		setSize(350, 400);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -90,6 +92,11 @@ public class Calculadora extends JFrame {
 		nuevoBotonOperacion("-");
 		nuevoBotonOperacion("*");
 		nuevoBotonOperacion("/");
+		nuevoBotonOperacion("^2");
+		nuevoBotonOperacion("sin");
+		nuevoBotonOperacion("cos");
+		nuevoBotonOperacion("tan");
+		nuevoBotonOperacion("2√");
 		nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
@@ -184,6 +191,7 @@ public class Calculadora extends JFrame {
 	 * Calcula el resultado y lo muestra por pantalla
 	 */
 	private void calcularResultado() {
+             
 		if (operacion.equals("+")) {
 			resultado += new Double(pantalla.getText());
 		} else if (operacion.equals("-")) {
@@ -192,8 +200,21 @@ public class Calculadora extends JFrame {
 			resultado /= new Double(pantalla.getText());
 		} else if (operacion.equals("*")) {
 			resultado *= new Double(pantalla.getText());
-		}
-
+		} else if (operacion.equals("^2")) {
+			resultado = resultado * resultado;
+		} else if (operacion.equals("2√")) { //
+			resultado = Math.sqrt(resultado);
+		} else
+                    if(operacion.equals("sin")||operacion.equals("cos")||operacion.equals("tan")){
+                        resultadorad = Math.toRadians(resultado);
+                        if (operacion.equals("sin")) {
+                            resultado = Math.sin(resultadorad);
+                        } else if (operacion.equals("cos")) {
+                                resultado = Math.cos(resultadorad);
+                        } else if (operacion.equals("tan")) {
+                                resultado = Math.tan(resultadorad);
+                        }
+                    }
 		pantalla.setText("" + resultado);
 		operacion = "";
 	}
